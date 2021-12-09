@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mybatisredisdemo.mapper.EmpMapper">
+    <resultMap id="emp_result" type="com.example.mybatisredisdemo.entity.Emp">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="age" jdbcType="INTEGER" property="age"/>
+    </resultMap>
+
+    <select id="selectByPrimaryKey" resultType="com.example.mybatisredisdemo.entity.Emp">
+        select * from emp where id=#{id}
+    </select>
+
+    <select id="insert" resultType="java.lang.Integer">
+        insert into emp (id,name,age) values (#{id},#{name},#{age})
+    </select>
+
+    <select id="selectForPage1" resultType="com.example.mybatisredisdemo.entity.Emp">
+        select * from emp limit #{param1},#{param2}
+    </select>
+</mapper>
